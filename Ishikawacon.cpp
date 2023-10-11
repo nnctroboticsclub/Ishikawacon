@@ -16,10 +16,10 @@ Ishikawacon::Ishikawacon(PinName tx, PinName rx, uint8_t addr_, int baud) :
     bufindex = 0;
 }
 
-Ishikawacon::StartReceive()
+void Ishikawacon::StartReceive()
 {
-    attach(callback(this, &FEP_RX22::ReceiveBytes));
-    timeoutTimer.attach(callback(this, &FEP_RX22::TimeoutLoop), 100ms);
+    attach(callback(this, &Ishikawacon::ReceiveBytes));
+    timeoutTimer.attach(callback(this, &Ishikawacon::TimeoutLoop), 100ms);
 }
 
 void Ishikawacon::TimeoutLoop()
